@@ -2,5 +2,6 @@ node_modules
 dist
 build
 .build
+.build-manifest
 
 *.log
