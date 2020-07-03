@@ -7,6 +7,7 @@ Modern web development starter.
 - **Snowpack**, for blazing fast dev environment
 - **Preact**, smaller runtime while still having access to most of React ecosystem if you choose to
 - **TypeScript**, never hurt anyone
+- **Goober**, [a less than 1KB css-in-js solution](https://github.com/cristianbote/goober)
 - **Jest**, for running your tests
 - **Webpack**, for bundling production builds
 - **ESLint**, for linting your codes

@@ -1,20 +1,20 @@
 import { h } from 'preact';
 import logo from './logo.png';
-import './App.css';
+import * as classes from './styles/app';
 
 const App: preact.FunctionComponent<{ name: string }> = ({ name = '' }) => {
   console.log('Welcome,', name);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className={classes.App}>
+      <header className={classes.AppHeader}>
+        <img src={logo} className={classes.AppLogo} alt="logo" />
         <p>
           Edit <code>src/App.jsx</code> and save to reload.
         </p>
         <p>Welcome to Snowpack + Preact + TypeScript starter!</p>
-        <div className="content">
-          <pre>
+        <div className={classes.Content}>
+          <pre className={classes.Pre}>
             <code>$ yarn install</code>
             <br />
             <code>$ yarn start</code>
