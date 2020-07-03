@@ -1,0 +1,41 @@
+{
+  "include": ["src", "src/types"],
+  "exclude": ["./node_modules", "./web_modules"],
+  "extends": "@snowpack/app-scripts-preact/tsconfig.base.json",
+  "compilerOptions": {
+    // You can't currently define paths in your 'extends' config,
+    // so we have to set 'baseUrl' & 'paths' here.
+    // Don't change these unless you know what you're doing.
+    // See: https://github.com/microsoft/TypeScript/issues/25430
+
+    /* snowpack defaults */
+    "baseUrl": "./",
+    "paths": {
+      "*": ["web_modules/.types/*"],
+      "/web_modules/*.js": [
+        "node_modules/@types/*",
+        "node_modules/*",
+        "web_modules/*.js"
+      ]
+    },
+
+    /* our own configs */
+    "moduleResolution": "node",
+    "target": "es5",
+    "module": "es2015",
+    "lib": ["es2015", "es2016", "es2017", "es2018", "es2019", "dom"],
+    "strict": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types", "src/types"]
+    // Feel free to add/edit new config options below:
+    // ...
+  }
+}
