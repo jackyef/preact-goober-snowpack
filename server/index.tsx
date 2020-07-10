@@ -3,8 +3,16 @@ import serve from 'koa-static';
 import { h } from 'preact';
 import renderToString from 'preact-render-to-string';
 import { extractCss, setPragma } from 'goober';
+import { JSDOM } from 'jsdom';
 import App from '../src/App';
 import { mainGlobalStyles } from '../src/styles/main'; 
+
+const jsdom = new JSDOM("<!doctype html><html><body><div>Hello World</div></body></html>");
+const { window } = jsdom;
+
+// Store away globals needed in node
+(global as any).window = window;
+(global as any).document = window.document;
 
 setPragma(h);
 
@@ -24,8 +32,10 @@ app.use(serve(STATIC_ASSETS_PATH, {
 
 app.use(async (ctx) => {
   // need to be called for every request
-  mainGlobalStyles(); 
-  const markup = renderToString(<App name="SSR" />);
+  const gooberContext = { target: document.createElement('div') };
+
+  mainGlobalStyles(gooberContext); 
+  const markup = renderToString(<App name="SSR" gooberContext={gooberContext} />);
 
   // simulate asynchronous rendering, for example, maybe we are using react-apollo `renderToStringWithData()`
   // Because goober use a single "sheet" for SSR, this will not work properly.
@@ -38,7 +48,8 @@ app.use(async (ctx) => {
     })
   })();
 
-  const style = extractCss();
+  // @ts-expect-error
+  const style = extractCss(gooberContext.target);
 
   console.log({style})
 

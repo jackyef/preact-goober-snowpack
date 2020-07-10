@@ -22,7 +22,7 @@ module.exports = {
         loader: 'ts-loader',
         options: {
           context: __dirname,
-          configFile: 'tsconfig.json'
+          configFile: 'tsconfig.json',
         },
         exclude: /node_modules/,
       },
@@ -37,13 +37,19 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new webpack.DefinePlugin({
       STATIC_ASSETS_PATH: JSON.stringify(path.resolve(projectRoot, 'build')),
-      ASSETS_MANIFEST_PATH: JSON.stringify(path.resolve(projectRoot, '.build-manifest/assets.json')),
-    })
+      ASSETS_MANIFEST_PATH: JSON.stringify(
+        path.resolve(projectRoot, '.build-manifest/assets.json'),
+      ),
+    }),
   ],
-  mode: 'production'
+  // externals: ['canvas', 'jsdom'],
+  externals: {
+		canvas: "commonjs canvas" // Important (2)
+	},
+  mode: 'production',
 };

@@ -1,27 +1,36 @@
-import { h } from 'preact';
+import { h, createContext } from 'preact';
 import logo from './logo.png';
 import * as classes from './styles/app';
 
-const App: preact.FunctionComponent<{ name: string }> = ({ name = '' }) => {
+// Required to get SSR to work
+const GooberContext = createContext({});
+
+const App: preact.FunctionComponent<{ name: string; gooberContext: any }> = ({
+  name = '',
+  gooberContext = {},
+}) => {
   console.log('Welcome,', name);
+  console.log('GooberContext', gooberContext);
 
   return (
-    <div className={classes.App()}>
-      <header className={classes.AppHeader()}>
-        <img src={logo} className={classes.AppLogo()} alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>Welcome to Snowpack + Preact + TypeScript starter!</p>
-        <div className={classes.Content()}>
-          <pre className={classes.Pre()}>
-            <code>$ yarn install</code>
-            <br />
-            <code>$ yarn start</code>
-          </pre>
-        </div>
-      </header>
-    </div>
+    <GooberContext.Provider value={gooberContext}>
+      <div className={classes.App(gooberContext)}>
+        <header className={classes.AppHeader(gooberContext)}>
+          <img src={logo} className={classes.AppLogo(gooberContext)} alt="logo" />
+          <p>
+            Edit <code>src/App.jsx</code> and save to reload.
+          </p>
+          <p>Welcome to Snowpack + Preact + TypeScript starter!</p>
+          <div className={classes.Content(gooberContext)}>
+            <pre className={classes.Pre(gooberContext)}>
+              <code>$ yarn install</code>
+              <br />
+              <code>$ yarn start</code>
+            </pre>
+          </div>
+        </header>
+      </div>
+    </GooberContext.Provider>
   );
 };
 
