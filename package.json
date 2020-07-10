@@ -19,7 +19,10 @@
     "build:server": "webpack --config ./server/webpack.config.js"
   },
   "dependencies": {
+    "@types/jsdom": "^16.2.3",
+    "canvas": "^2.6.1",
     "goober": "^1.8.0",
+    "jsdom": "^16.3.0",
     "koa": "^2.13.0",
     "koa-static": "^5.0.0",
     "preact": "^10.4.1",

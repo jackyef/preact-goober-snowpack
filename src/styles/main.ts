@@ -1,6 +1,10 @@
 import { glob } from 'goober';
 
-export const mainGlobalStyles = (): void => glob`
+let contextSpecificGlob: typeof glob;
+
+export const mainGlobalStyles = (ctx: any): void => {
+  contextSpecificGlob = glob.bind(ctx);
+  return contextSpecificGlob`
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,3 +18,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }`;
+};

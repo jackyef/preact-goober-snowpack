@@ -8,6 +8,6 @@ import { mainGlobalStyles } from './styles/main';
 setPragma(h);
 
 const container = document.getElementById('root') as HTMLElement;
-
-mainGlobalStyles();
-render(<App name={"John Doe"} />, container);
+const gooberContext = this || {};
+mainGlobalStyles(gooberContext);
+render(<App name={"John Doe"} gooberContext={gooberContext} />, container);
