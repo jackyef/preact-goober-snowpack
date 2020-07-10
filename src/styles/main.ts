@@ -1,6 +1,6 @@
 import { glob } from 'goober';
 
-glob`
+export const mainGlobalStyles = (): void => glob`
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

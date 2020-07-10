@@ -1,10 +1,10 @@
 import { css } from 'goober';
 
-export const App = css`
+export const App = (): string => css`
   text-align: center;
 `;
 
-export const AppHeader = css`
+export const AppHeader = (): string => css`
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -15,11 +15,11 @@ export const AppHeader = css`
   color: white;
 `;
 
-export const AppLink = css`
+export const AppLink = (): string => css`
   color: #61dafb;
 `;
 
-export const AppLogo = css`
+export const AppLogo = (): string => css`
   height: 40vmin;
   pointer-events: none;
   margin-bottom: 1rem;
@@ -35,11 +35,11 @@ export const AppLogo = css`
   }
 `;
 
-export const Content = css`
+export const Content = (): string => css`
   width: 80%;
 `;
 
-export const Pre = css`
+export const Pre = (): string => css`
   background: #333333;
   border-radius: 2rem;
   border: 1px solid #282c34;

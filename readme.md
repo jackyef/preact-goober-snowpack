@@ -1,6 +1,6 @@
-# Snowpack + Preact + TypeScript starter
+# Snowpack + Preact + SSR + TypeScript starter (WIP)
 
-Modern web development starter.
+Modern web development starter. Use snowpack during development for fast development, bundle using webpack for production.
 - 📦 13.1 KB JS bundle size (5.61 KB gzipped)
 
 ## Includes
@@ -23,18 +23,18 @@ Modern web development starter.
     yarn start
     ```
 
-3. Generate production bundle using webpack
+3. Generate production client bundle using webpack
     ```sh
     yarn build
     ```
 
 4. To test SSR (uses production build)
     ```sh
-    yarn build # build the client bundle first, if not built yet
+    yarn build # build the client bundle first, if it's not built yet
     yarn build:server
     node server/dist/main.js
     ```
 
 ## Current issues
-- Extracted CSS from SSR are only available for first request
+- Extracted CSS from SSR are only available for first request on asynchronous requests
 - Styles using `css` tags are not minified in client bundle
