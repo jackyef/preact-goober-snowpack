@@ -7,8 +7,8 @@ interface ImportMeta {
   env: Record<string, any>;
 }
 
-declare module "preact/devtools" {
+declare module 'preact/devtools' {
   // Empty. This module initializes the React Developer Tools integration
-  export = preactDevTools;		
-	// when imported.
+  export = preactDevTools;
+  // when imported.
 }

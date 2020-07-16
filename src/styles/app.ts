@@ -1,4 +1,4 @@
-import { css } from 'goober';
+import { css } from './styles-collector';
 
 export const App = (): string => css`
   text-align: center;
